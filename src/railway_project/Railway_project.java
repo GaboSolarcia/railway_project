@@ -5,7 +5,9 @@ public class Railway_project {
 
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        Initializer initApp = new Initializer();
+        initApp.create_cities();
+        initApp.create_trains();
     }
     
 }
