@@ -11,16 +11,20 @@ public class Initializer {
         for (int i = 0; i < cities.size(); i++){
             app.createCities(cities.get(i));
         }
-        app.showCities();
+        //app.showCities();
     }
     
     public void create_trains(){
+        int randomCity = 0;
         for(int i = 0; i <= 4; i++){
             for(int j = 0; j <= 1; j++){
-                int randomInt = ThreadLocalRandom.current().nextInt(0, 5);
-                
-                
+                do{
+                    randomCity = ThreadLocalRandom.current().nextInt(0, 5);
+                } while(randomCity == i);
+                int randomPeopleCount = ThreadLocalRandom.current().nextInt(1, 15);
+                app.trainLists(cities.get(i), cities.get(randomCity), randomPeopleCount);   
             }
         }
+        app.show_trains();
     }
 }

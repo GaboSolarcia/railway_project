@@ -83,7 +83,7 @@ public class Operations {
                 } catch (Exception e) {
                     return false;
                 }
-            case "Hamburg":
+            case "Hamburgo":
                 try {
                     if(this.trainsListHamburg == null){
                         this.trainsListHamburg = newNode;
@@ -96,7 +96,7 @@ public class Operations {
                 } catch (Exception e) {
                     return false;
                 }
-            case "Frankfurt":
+            case "FrankFurt":
                 try {
                     if(this.trainsListFrankfurt == null){
                         this.trainsListFrankfurt = newNode;
@@ -124,6 +124,44 @@ public class Operations {
                 }
             default:
                 return false;
+        }
+    }
+    
+    public void show_trains(){
+        try{
+            if (this.trainsListBerlin == null) 
+                System.out.println("No hay ciudades creadas en Berlin");
+            else{
+                Train aux = trainsListBerlin;
+                for(; aux != null; System.out.println(aux.actual_city +" -> "+ aux.destination +" -> people: "+ aux.people_amount), aux = aux.next);
+            }
+            if (this.trainsListFrankfurt == null) 
+                System.out.println("No hay ciudades creadas en Frankfurt");
+            else{
+                Train aux = trainsListFrankfurt;
+                for(; aux != null; System.out.println(aux.actual_city +" -> "+ aux.destination +" -> people: "+ aux.people_amount), aux = aux.next);
+            }
+            if (this.trainsListHamburg == null) 
+                System.out.println("No hay ciudades creadas en Hamburgo");
+            else{
+                Train aux = trainsListHamburg;
+                for(; aux != null; System.out.println(aux.actual_city +" -> "+ aux.destination +" -> people: "+ aux.people_amount), aux = aux.next);
+            }
+            if (this.trainsListLeipzig == null) 
+                System.out.println("No hay ciudades creadas en Leipzig");
+            else{
+                Train aux = trainsListLeipzig;
+                for(; aux != null; System.out.println(aux.actual_city +" -> "+ aux.destination +" -> people: "+ aux.people_amount), aux = aux.next);
+            }
+            if (this.trainsListMunich == null) 
+                System.out.println("No hay ciudades creadas en Munich");
+            else{
+                Train aux = trainsListMunich;
+                for(; aux != null; System.out.println(aux.actual_city +" -> "+ aux.destination +" -> people: "+ aux.people_amount), aux = aux.next);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Hubo un problema al conectar con la lista");
         }
     }
 }
