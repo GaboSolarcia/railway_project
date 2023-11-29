@@ -14,7 +14,7 @@ public class Initializer {
         //app.showCities();
     }
     
-    public void create_trains(){
+    public Train create_trains(){
         int randomCity = 0;
         for(int i = 0; i <= 4; i++){
             for(int j = 0; j <= 1; j++){
@@ -25,6 +25,6 @@ public class Initializer {
                 app.trainLists(cities.get(i), cities.get(randomCity), randomPeopleCount);   
             }
         }
-        app.show_trains();
+        return app.getBerlinTrains();
     }
 }

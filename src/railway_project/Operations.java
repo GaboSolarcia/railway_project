@@ -56,9 +56,9 @@ public class Operations {
         newNode.actual_city = actual_city;
         newNode.destination = destination;
         newNode.people_amount = people_amount;
-        switch (actual_city) {
-            case "Berlin":
-                try {
+        try {
+            switch (actual_city) {
+                case "Berlin":
                     if(this.trainsListBerlin == null){
                         this.trainsListBerlin = newNode;
                     }
@@ -67,11 +67,7 @@ public class Operations {
                         this.trainsListBerlin = newNode;
                     }
                     return true;
-                } catch (Exception e) {
-                    return false;
-                }
-            case "Munich":
-                try {
+                case "Munich":
                     if(this.trainsListMunich == null){
                         this.trainsListMunich = newNode;
                     }
@@ -80,11 +76,7 @@ public class Operations {
                         this.trainsListMunich = newNode;
                     }
                     return true;
-                } catch (Exception e) {
-                    return false;
-                }
             case "Hamburgo":
-                try {
                     if(this.trainsListHamburg == null){
                         this.trainsListHamburg = newNode;
                     }
@@ -93,11 +85,7 @@ public class Operations {
                         this.trainsListHamburg = newNode;
                     }
                     return true;
-                } catch (Exception e) {
-                    return false;
-                }
             case "FrankFurt":
-                try {
                     if(this.trainsListFrankfurt == null){
                         this.trainsListFrankfurt = newNode;
                     }
@@ -105,12 +93,7 @@ public class Operations {
                         newNode.next = this.trainsListFrankfurt;
                         this.trainsListFrankfurt = newNode;
                     }
-                    return true;
-                } catch (Exception e) {
-                    return false;
-                }
             case "Leipzig":
-                try {
                     if(this.trainsListLeipzig == null){
                         this.trainsListLeipzig = newNode;
                     }
@@ -119,15 +102,16 @@ public class Operations {
                         this.trainsListLeipzig = newNode;
                     }
                     return true;
-                } catch (Exception e) {
-                    return false;
-                }
+                
             default:
                 return false;
+            }
+        } catch (Exception e) {
+            return false;
         }
     }
     
-    public void show_trains(){
+    public void showTrains(){
         try{
             if (this.trainsListBerlin == null) 
                 System.out.println("No hay ciudades creadas en Berlin");
@@ -163,5 +147,18 @@ public class Operations {
         catch (Exception e){
             System.out.println("Hubo un problema al conectar con la lista");
         }
+    }
+    
+    public Train getBerlinTrains(){
+        try{
+            if(this.trainsListBerlin == null){
+                System.out.println("No hay trenes en berlin");
+            }else{
+                return this.trainsListBerlin;    
+            }
+        } catch(Exception e){
+            System.out.println("Hubo un problema al conectar con la lista");
+        }
+        return null;
     }
 }
