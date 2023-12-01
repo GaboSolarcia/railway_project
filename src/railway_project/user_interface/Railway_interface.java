@@ -1,17 +1,9 @@
 package railway_project.user_interface;
 
 import railway_project.Initializer;
-import railway_project.City;
 import railway_project.Operations;
-import railway_project.Person;
-import railway_project.Train;
 
-/**
- *
- * @author gabos
- */
 public class Railway_interface extends javax.swing.JFrame {
-    private Train berlinTrains;
     Initializer initApp = new Initializer();
     int berlinCoordinatesX = 730;
     int berlinCoordinatesY = 320;
@@ -28,8 +20,10 @@ public class Railway_interface extends javax.swing.JFrame {
     public Railway_interface() {
         initComponents();
         setLayout(null);
+        initApp.create_cities();
+        initApp.create_trains();
         Hide_trains();
-        Set_trains_locations();
+        setTrainsTooltips();     
     }
     
     public void Hide_trains(){
@@ -45,27 +39,73 @@ public class Railway_interface extends javax.swing.JFrame {
         lblTrain9.setVisible(false);
     }
     
-    public void Set_trains_locations(){
-//        initApp.create_cities();
-//        berlinTrains = initApp.create_trains();
-//        if(berlinTrains != null){
-        lblTrain.setLocation(berlinCoordinatesX, berlinCoordinatesY);
-        lblTrain1.setLocation(berlinCoordinatesX+60, berlinCoordinatesY);
-        lblTrain2.setLocation(hamburgoCoordinatesX, hamburgoCoordinatesY);
-        lblTrain3.setLocation(hamburgoCoordinatesX+60, hamburgoCoordinatesY);
-        lblTrain4.setLocation(frankfurtCoordinatesX, frankfurtCoordinatesY);
-        lblTrain5.setLocation(frankfurtCoordinatesX+60, frankfurtCoordinatesY);
-        lblTrain6.setLocation(munichCoordinatesX, munichCoordinatesY);
-        lblTrain7.setLocation(munichCoordinatesX+60, munichCoordinatesY);
-        lblTrain8.setLocation(leipzigCoordinatesX, leipzigCoordinatesY);
-        lblTrain9.setLocation(leipzigCoordinatesX+60, leipzigCoordinatesY);
-            
+    public void setTrainsTooltips(){
+        lblTrain.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(0).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(0).people_amount
+                         + "</html>");
+        lblTrain1.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(1).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(1).people_amount
+                         + "</html>");
+        lblTrain2.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(2).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(2).people_amount
+                         + "</html>");
+        lblTrain3.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(3).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(3).people_amount
+                         + "</html>");
+        lblTrain4.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(4).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(4).people_amount
+                         + "</html>");
+        lblTrain5.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(5).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(5).people_amount
+                         + "</html>");
+        lblTrain6.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(6).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(6).people_amount
+                         + "</html>");
+        lblTrain7.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(7).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(7).people_amount
+                         + "</html>");
+        lblTrain8.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(8).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(8).people_amount
+                         + "</html>");
+        lblTrain9.setToolTipText("<html>"
+                              + "Ciudad destino: " + initApp.getTrain(9).destination
+                              +"<br>"
+                              + "Cantidad de personas: " + initApp.getTrain(9).people_amount
+                         + "</html>");
+        lblBerlin.setToolTipText("Personas en espera: "+ initApp.getCity("Berlin").people_amount);
+        lblFrankfurt.setToolTipText("Personas en espera: "+ initApp.getCity("Frankfurt"));
+        lblMunich.setToolTipText("Personas en espera: "+ initApp.getCity("Munich"));
+        lblLeipzig.setToolTipText("Personas en espera: "+ initApp.getCity("Leipzig"));
+        lblHamburgo.setToolTipText("Personas en espera: "+ initApp.getCity("Hamburgo"));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblBerlin = new javax.swing.JLabel();
+        lblLeipzig = new javax.swing.JLabel();
+        lblFrankfurt = new javax.swing.JLabel();
+        lblMunich = new javax.swing.JLabel();
+        lblHamburgo = new javax.swing.JLabel();
         lblTrain = new javax.swing.JLabel();
         lblTrain1 = new javax.swing.JLabel();
         lblTrain2 = new javax.swing.JLabel();
@@ -82,35 +122,61 @@ public class Railway_interface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblBerlin.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        lblBerlin.setForeground(new java.awt.Color(102, 0, 0));
+        lblBerlin.setText("Berlin");
+        getContentPane().add(lblBerlin, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, -1, -1));
+
+        lblLeipzig.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        lblLeipzig.setForeground(new java.awt.Color(102, 0, 0));
+        lblLeipzig.setText("Leipzig");
+        getContentPane().add(lblLeipzig, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, -1, -1));
+
+        lblFrankfurt.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        lblFrankfurt.setForeground(new java.awt.Color(102, 0, 0));
+        lblFrankfurt.setText("Frankfurt");
+        getContentPane().add(lblFrankfurt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 570, -1, -1));
+
+        lblMunich.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        lblMunich.setForeground(new java.awt.Color(102, 0, 0));
+        lblMunich.setText("Munich");
+        getContentPane().add(lblMunich, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 750, -1, -1));
+
+        lblHamburgo.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        lblHamburgo.setForeground(new java.awt.Color(102, 0, 0));
+        lblHamburgo.setText("Hamburgo");
+        getContentPane().add(lblHamburgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+
         lblTrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, -1));
+        getContentPane().add(lblTrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 320, -1, -1));
 
         lblTrain1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 790, -1, -1));
+        getContentPane().add(lblTrain1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, -1, -1));
 
         lblTrain2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, -1, -1));
+        getContentPane().add(lblTrain2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
 
         lblTrain3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, -1, -1));
+        getContentPane().add(lblTrain3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         lblTrain4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, -1, -1));
+        getContentPane().add(lblTrain4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 520, -1, -1));
 
         lblTrain5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 320, -1, -1));
+        lblTrain5.setToolTipText("");
+        getContentPane().add(lblTrain5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, -1));
 
         lblTrain6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, -1, -1));
+        getContentPane().add(lblTrain6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 790, -1, -1));
 
         lblTrain7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
+        getContentPane().add(lblTrain7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 790, -1, -1));
 
         lblTrain8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
+        getContentPane().add(lblTrain8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 490, -1, -1));
 
         lblTrain9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/train_resized_resized.png"))); // NOI18N
-        getContentPane().add(lblTrain9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 790, -1, -1));
+        getContentPane().add(lblTrain9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, -1, -1));
 
         initialize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/railway_project/interface_media/icons8-circled-play-96.png"))); // NOI18N
         initialize.setContentAreaFilled(false);
@@ -140,9 +206,6 @@ public class Railway_interface extends javax.swing.JFrame {
         lblTrain9.setVisible(true);
     }//GEN-LAST:event_initializeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -178,6 +241,11 @@ public class Railway_interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton initialize;
+    private javax.swing.JLabel lblBerlin;
+    private javax.swing.JLabel lblFrankfurt;
+    private javax.swing.JLabel lblHamburgo;
+    private javax.swing.JLabel lblLeipzig;
+    private javax.swing.JLabel lblMunich;
     private javax.swing.JLabel lblTrain;
     private javax.swing.JLabel lblTrain1;
     private javax.swing.JLabel lblTrain2;

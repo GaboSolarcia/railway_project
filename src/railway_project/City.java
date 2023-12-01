@@ -1,8 +1,7 @@
 package railway_project;
 
 public class City {
-    public String name;
-    public int trains_amount;
+    public String city;
     public int people_amount;
     public City next;
 }
