@@ -7,9 +7,9 @@ public class Logic {
         Op = new Operations();
     }  
 
-    public void switchCity() {
-        Op.moveTrains();
-    }
+//    public void switchCity() {
+//        Op.moveTrains();
+//    }
     
     
 }

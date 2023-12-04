@@ -1,5 +1,8 @@
 package railway_project;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Operations {
     private Train trainsList;
     private Train trainsListBerlin;
@@ -9,7 +12,7 @@ public class Operations {
     private Train trainsListLeipzig;
     private City citiesList;
     private Person peopleBerlin;
-    private Person peopleHamburgo;
+    private Person peopleHamburg;
     private Person peopleMunich;
     private Person peopleLeipzig;
     private Person peopleFrankfurt;
@@ -122,17 +125,57 @@ public class Operations {
     }
     
     public Train getTrainInfo(int trainId){
-        Train selectedTrain = new Train();
-        Train aux = this.trainsList;
+        Train aux = this.trainsListBerlin;
         while(aux.trainId != trainId){
             aux = aux.next;
+            if(aux.trainId == trainId)
+                return aux;
+            else{
+                if(aux.next == null)
+                    break;
+            }
         }
-        
-        selectedTrain.actual_city = aux.actual_city;
-        selectedTrain.destination = aux.destination;
-        selectedTrain.people_amount = aux.people_amount;
-                
-        return selectedTrain;
+        aux = this.trainsListFrankfurt;
+        while(aux.trainId != trainId){
+            aux = aux.next;
+            if(aux.trainId == trainId)
+                return aux;
+            else{
+                if(aux.next == null)
+                    break;
+            }
+        }
+        aux = this.trainsListMunich;
+        while(aux.trainId != trainId){
+            aux = aux.next;
+            if(aux.trainId == trainId)
+                return aux;
+            else{
+                if(aux.next == null)
+                    break;
+            }
+        }
+        aux = this.trainsListLeipzig;
+        while(aux.trainId != trainId){
+            aux = aux.next;
+            if(aux.trainId == trainId)
+                return aux;
+            else{
+                if(aux.next == null)
+                    break;
+            }
+        }
+        aux = this.trainsListHamburg;
+        while(aux.trainId != trainId){
+            aux = aux.next;
+            if(aux.trainId == trainId)
+                return aux;
+            else{
+                if(aux.next == null)
+                    break;
+            }
+        }
+        return null;
     }
     
     public City getCityInfo(String city){
@@ -158,12 +201,12 @@ public class Operations {
                         this.peopleBerlin = newNode;
                     }
                     break;
-                case "Hamburgo":
-                    if(this.peopleHamburgo == null)
-                        this.peopleHamburgo = newNode;
+                case "Hamburg":
+                    if(this.peopleHamburg == null)
+                        this.peopleHamburg = newNode;
                     else{
-                        newNode.next = this.peopleHamburgo;
-                        this.peopleHamburgo = newNode;
+                        newNode.next = this.peopleHamburg;
+                        this.peopleHamburg = newNode;
                     }
                     break;
                 case "Leipzig":
@@ -206,8 +249,8 @@ public class Operations {
             case "Berlin":
                 aux = this.peopleBerlin;
                 break;
-            case "Hamburgo":
-                aux = this.peopleHamburgo;
+            case "Hamburg":
+                aux = this.peopleHamburg;
                 break;
             case "Munich":
                 aux = this.peopleMunich;
@@ -231,6 +274,46 @@ public class Operations {
         else{
             Train firstTrain = this.trainsListBerlin;
             firstTrain.actual_city = firstTrain.destination;
+            firstTrain.destination = newDestination(firstTrain.destination);
+            this.trainsListBerlin = this.trainsListBerlin.next;
+            switchCityList(firstTrain);
+            
+        }
+        if(this.trainsListFrankfurt == null)
+            System.out.println("No hay trenes en Frankfurt");
+        else{
+            Train firstTrain = this.trainsListFrankfurt;
+            firstTrain.actual_city = firstTrain.destination;
+            firstTrain.destination = newDestination(firstTrain.destination);
+            this.trainsListFrankfurt = this.trainsListFrankfurt.next;
+            switchCityList(firstTrain);
+            
+        }
+        if(this.trainsListHamburg == null)
+            System.out.println("No hay trenes en Hamburg");
+        else{
+            Train firstTrain = this.trainsListHamburg;
+            firstTrain.actual_city = firstTrain.destination;
+            firstTrain.destination = newDestination(firstTrain.destination);
+            this.trainsListHamburg = this.trainsListHamburg.next;
+            switchCityList(firstTrain);
+        }
+        if(this.trainsListLeipzig == null)
+            System.out.println("No hay trenes en Leipzig");
+        else{
+            Train firstTrain = this.trainsListLeipzig;
+            firstTrain.actual_city = firstTrain.destination;
+            firstTrain.destination = newDestination(firstTrain.destination);
+            this.trainsListLeipzig = this.trainsListLeipzig.next;
+            switchCityList(firstTrain);
+        }
+        if(this.trainsListMunich == null)
+            System.out.println("No hay trenes en Munich");
+        else{
+            Train firstTrain = this.trainsListMunich;
+            firstTrain.actual_city = firstTrain.destination;
+            firstTrain.destination = newDestination(firstTrain.destination);
+            this.trainsListMunich = this.trainsListMunich.next;
             switchCityList(firstTrain);
         }
     }
@@ -286,5 +369,14 @@ public class Operations {
             return false;
         }
         
+    }
+
+    private String newDestination(String destination) {
+        List<String> cities = List.of("Berlin", "Munich", "Hamburg", "Frankfurt", "Leipzig");
+        int randomCity;
+        do{
+            randomCity = ThreadLocalRandom.current().nextInt(0, 5);
+        } while(cities.get(randomCity) == destination);
+        return cities.get(randomCity);
     }
 }

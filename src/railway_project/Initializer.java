@@ -11,7 +11,7 @@ public class Initializer {
         Op = new Operations();
     }    
     
-    List<String> cities = List.of("Berlin", "Munich", "Hamburgo", "Frankfurt", "Leipzig");
+    List<String> cities = List.of("Berlin", "Munich", "Hamburg", "Frankfurt", "Leipzig");
     
     public void create_cities(){
         
@@ -52,5 +52,9 @@ public class Initializer {
     
     public int getPeoplePerCity(String city){
         return Op.getPeoplePerCity(city);
+    }
+    
+    public void switchCity() {
+        Op.moveTrains();
     }
 }
