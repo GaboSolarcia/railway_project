@@ -35,7 +35,7 @@ public class Initializer {
                     randomCity = ThreadLocalRandom.current().nextInt(0, 5);
                 } while(randomCity == i);
                 int randomPeopleCount = ThreadLocalRandom.current().nextInt(1, 20);
-                Op.trainList(cities.get(i), cities.get(randomCity), randomPeopleCount, trainId);  
+                Op.trainList(cities.get(i), cities.get(randomCity), randomPeopleCount, trainId);
                 Op.pushTrainIntoStacks(cities.get(i), cities.get(randomCity), randomPeopleCount, trainId);
                 trainId++;
             }

@@ -128,54 +128,44 @@ public class Operations {
         Train aux = this.trainsListBerlin;
         while(aux.trainId != trainId){
             aux = aux.next;
-            if(aux.trainId == trainId)
-                return aux;
-            else{
-                if(aux.next == null)
-                    break;
-            }
+            if(aux.next == null)
+                break;
         }
+        if(aux.trainId == trainId)
+                return aux;
         aux = this.trainsListFrankfurt;
         while(aux.trainId != trainId){
             aux = aux.next;
-            if(aux.trainId == trainId)
-                return aux;
-            else{
-                if(aux.next == null)
-                    break;
-            }
+            if(aux.next == null)
+                break;
         }
+        if(aux.trainId == trainId)
+                return aux;
         aux = this.trainsListMunich;
         while(aux.trainId != trainId){
             aux = aux.next;
-            if(aux.trainId == trainId)
-                return aux;
-            else{
-                if(aux.next == null)
-                    break;
-            }
+            if(aux.next == null)
+                break;
         }
+        if(aux.trainId == trainId)
+                return aux;
         aux = this.trainsListLeipzig;
         while(aux.trainId != trainId){
             aux = aux.next;
-            if(aux.trainId == trainId)
-                return aux;
-            else{
-                if(aux.next == null)
-                    break;
-            }
+            if(aux.next == null)
+                break;
         }
+        if(aux.trainId == trainId)
+                return aux;
         aux = this.trainsListHamburg;
         while(aux.trainId != trainId){
             aux = aux.next;
-            if(aux.trainId == trainId)
-                return aux;
-            else{
-                if(aux.next == null)
-                    break;
-            }
+            if(aux.next == null)
+                break;
         }
-        return null;
+        if(aux.trainId == trainId)
+                return aux;
+        return aux;
     }
     
     public City getCityInfo(String city){

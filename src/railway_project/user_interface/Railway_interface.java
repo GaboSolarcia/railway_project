@@ -25,7 +25,7 @@ public class Railway_interface extends javax.swing.JFrame {
         initApp.create_cities();
         initApp.create_trains();
         Hide_trains();
-        setTrainsTooltips(); 
+        
     }
     
     public void Hide_trains(){
@@ -236,6 +236,7 @@ public class Railway_interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initializeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initializeActionPerformed
+        setTrainsTooltips(); 
         lblTrain.setVisible(true);
         lblTrain1.setVisible(true);
         lblTrain2.setVisible(true);
@@ -249,6 +250,7 @@ public class Railway_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_initializeActionPerformed
 
     private void btnMoveTrainsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveTrainsActionPerformed
+        setTrainsTooltips(); 
         initApp.switchCity();
         setTrainsTooltips();
     }//GEN-LAST:event_btnMoveTrainsActionPerformed
